@@ -5,15 +5,15 @@
 (def items [4 8 5 1 7 6 1 4 2 2])
 
 (deftest item-fits-on-empty-bin
-  (is (fit-in-bin? 1 [] 1))
+  (is (not (overflow? 1 [] 1)))
   )
 
 (deftest item-dont-fit-on-full-bin
-  (is (not (fit-in-bin? 1 [1] 1)))
+  (is (overflow? 1 [1] 1))
   )
 
 (deftest item-fits-when-there-is-enough-space
-  (is (fit-in-bin? 1 [1] 2))
+  (is (not (overflow? 2 [1] 1)))
   )
 
 (deftest items-will-be-packet-in-four-full-bins
